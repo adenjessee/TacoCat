@@ -38,7 +38,7 @@
     <div class="jumbotron-fluid text-center">
         <div class="container">
             <h1 class="display-3">Taco Cat</h1>
-            <p class="lead">Is it a palindrome?</p>
+            <p class="lead">Is it a <a target="_blank" href="https://literaryterms.net/palindrome/">palindrome?</a></p>
             <hr class="my-2">
             <p>Type any word or phrase and see if it is a palindrome or not.</p>
         </div>
@@ -78,24 +78,26 @@
     <script>
         // Custom JS
         document.getElementById("btnDemo").addEventListener("click", function(){
+
+            // start with true and set false later if its not a palindrome
             let isPalindrome = true;
-            let isWord = true;
+            let isWord = true; // we want the user to type something
             let inputWordOriginal = document.getElementById("input1").value;
 
             // change the input to ingnore caps and other characters
-            let inputWord = inputWordOriginal.toLowerCase();
-            inputWord = inputWord.replace(/[^a-zA-Z0-9 ]/g, "");
-            inputWord = inputWord.replace(/ /g,'')
+            let inputWord = inputWordOriginal.toLowerCase(); // make all characters lowercase
+            inputWord = inputWord.replace(/[^a-z0-9]/g, ""); // ignore the characters that are not letters
+            inputWord = inputWord.replace(/ /g,'') // ignore white spaces
 
-            for(let i=0; i<inputWord.length/2; i++){
+            // loop through half the size of the input word
+            for(let i=0; i < inputWord.length/2; i++){
+                // lets shorten the variable name
                 let length = inputWord.length;
-                console.log(inputWord.charAt(i), inputWord.charAt(length-1-i) );
+
+                // lets look at the exact opposite side to see if its the same character
                 if(inputWord.charAt(i) != inputWord.charAt(length-1-i)){
+                    // if the characters are not the same then it cant be a palindrome
                     isPalindrome = false;
-                    console.log("FALSE");
-                }
-                else{
-                    console.log("TRUE");
                 }
             }
 
